@@ -3,34 +3,24 @@
 Public Class Form1
     Private Sherlock As Sherlock_NET 'initialize in a t/c
 
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim d As New OpenFileDialog With {
-            .CheckFileExists = True,
-            .CheckPathExists = True,
-            .Multiselect = False,
-            .RestoreDirectory = True,
-            .Title = "Open Sherlock *.ivs file",
-            .Filter = "Sherlock Files (*.ivs)|*.ivs|All files (*.*)|*.*"}
-        d.ShowDialog()
-        Try
-            Sherlock.LoadInvestigation(d.FileName)
-        Catch ex As Exception
-            MsgBox("Problem loading the sherlock investigation", MsgBoxStyle.OkCancel, "Error")
-        End Try
+#Region "AxIpeDspCtrl1 ActiveX Functions on Main Form"
+    ''' <summary>
+    ''' Starts the activeX control for Sherlock.
+    ''' </summary>
+    Private Sub SherlockWindowINIT()
+        AxIpeDspCtrl1.ConnectEngine(Sherlock.hSherlock.GetEngineObj)
+        AxIpeDspCtrl1.SetZoom(-1)
     End Sub
-
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        LiveImageSherlockWindow(CamNames.CamName1)
+    ''' <summary>
+    ''' Disconnects the current camera feed and connects the passed camera name.
+    ''' </summary>
+    ''' <param name="CamName">Camera Name used inside the Sherlock investigation.</param>
+    Public Sub LiveImageSherlockWindow(ByVal CamName As String)
+        AxIpeDspCtrl1.DisconnectImgWindow()
+        AxIpeDspCtrl1.ConnectImgWindow(CamName)
     End Sub
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-
-    End Sub
-
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        Close()
-    End Sub
+#End Region
+#Region "Form open and close"
     ''' <summary>
     ''' Load the form.
     ''' </summary>
@@ -39,6 +29,7 @@ Public Class Form1
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles Me.Load
         Try
             Sherlock = New Sherlock_NET
+            Sherlock.InitializeSherlock()
             SherlockWindowINIT()
         Catch ex As Exception
             If MessageBox.Show(ex.InnerException.Message + vbNewLine + "Would you like to continue?", "Error", MessageBoxButtons.YesNo) = DialogResult.No Then
@@ -60,22 +51,34 @@ Public Class Form1
             MsgBox("Exception in Closing the form", MsgBoxStyle.OkOnly, "Error")
         End Try
     End Sub
-    ''' <summary>
-    ''' Starts the activeX control for Sherlock.
-    ''' </summary>
-    Private Sub SherlockWindowINIT()
-        AxIpeDspCtrl1.ConnectEngine(Sherlock.hSherlock.GetEngineObj)
-        AxIpeDspCtrl1.SetZoom(-1)
+#End Region
+#Region "Buttons"
+    Private Sub btnOpenSherlock_Click(sender As Object, e As EventArgs) Handles btnOpenSherlock.Click
+        Dim d As New OpenFileDialog With {
+            .CheckFileExists = True,
+            .CheckPathExists = True,
+            .Multiselect = False,
+            .RestoreDirectory = True,
+            .Title = "Open Sherlock *.ivs file",
+            .Filter = "Sherlock Files (*.ivs)|*.ivs|All files (*.*)|*.*"}
+        d.ShowDialog()
+        Try
+            Sherlock.LoadInvestigation(d.FileName)
+        Catch ex As Exception
+            MsgBox("Problem loading the sherlock investigation", MsgBoxStyle.OkCancel, "Error")
+        End Try
     End Sub
 
-    ''' <summary>
-    ''' 
-    ''' </summary>
-    ''' <param name="CameraName">Camera Name used inside the Sherlock investigation.</param>
-    Public Sub LiveImageSherlockWindow(ByVal CameraName As String)
-            AxIpeDspCtrl1.DisconnectImgWindow()
-            AxIpeDspCtrl1.ConnectImgWindow(CameraName)
-        End Sub
+    Private Sub btnStartVideo_Click(sender As Object, e As EventArgs) Handles btnStartVideo.Click
+        LiveImageSherlockWindow(CamNames.CamName1)
+    End Sub
 
+    Private Sub btnStopVideo_Click(sender As Object, e As EventArgs) Handles btnStopVideo.Click
 
+    End Sub
+
+    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+        Close()
+    End Sub
+#End Region
 End Class

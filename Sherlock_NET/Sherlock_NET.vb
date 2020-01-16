@@ -1,19 +1,11 @@
 ﻿Imports IpeEngCtrlLib
+
 ''' <summary>
 ''' Fill the Sherlock Vars with the Camera names, with the variables being pulled from the investigations etc.
 ''' </summary>
 Module SherlockVars
-    ''' <summary>
-    ''' Names of the different cameras. 
-    ''' Camera names are found in the Sherlock investigations. Image Window instruction. The default camera name is "imgA". 
-    ''' </summary>
-    Public Structure CamNames
-        '
-        Const CamName1 As String = "exCamName1"
-        Const CamName2 As String = "exCamName2"
-        'etc. etc. etc...
-    End Structure
-
+    'You will need to update this section with the required Sherlock variables you want to use in your specific
+    'Sherlock Investigations.
 #Region "Sherlock Variables"
 #Region "Bool"
 
@@ -26,27 +18,35 @@ Module SherlockVars
 #End Region
 #End Region
 
+    ''' <summary>
+    ''' Names of the different cameras. 
+    ''' Camera names are found in the Sherlock investigations. Image Window instruction. The default camera name is "imgA". 
+    ''' </summary>
+    Public Structure CamNames
+        Const CamName1 As String = "exCamName1"
+        Const CamName2 As String = "exCamName2"
+        'etc. etc. etc...
+    End Structure
 End Module
 
 ''' <summary>
 ''' Control the Sherlock software.
 ''' </summary>
 Public Class Sherlock_NET
-    Friend WithEvents hSherlock As Engine
+    Friend WithEvents hSherlock As New Engine
     Friend nErr As I_ENG_ERROR
 
     ''' <summary>
-    ''' Initializes Sherlock for use.
+    ''' Initialize Sherlock Engine.
     ''' </summary>
-    Public Sub New()
-        hSherlock = New Engine
+    Public Sub InitializeSherlock()
         nErr = hSherlock.EngInitialize
         Dim x As Integer = 0
         While nErr <> I_ENG_ERROR.I_OK
             If x >= 30 Then Throw New ApplicationException("Sherlock did not initialize.")
             x += 1
         End While
-        Console.WriteLine(TimeString + " Successfully initialized Sherlock.")
+        Console.WriteLine(String.Format("{0}: Successfully initialized Sherlock.", TimeString))
     End Sub
 
     ''' <summary>
@@ -59,13 +59,36 @@ Public Class Sherlock_NET
         nErr = hSherlock.InvLoad(filepath)
         If nErr <> I_ENG_ERROR.I_OK Then Throw New ApplicationException("Error loading " + filepath + " into sherlock.")
         nErr = hSherlock.InvModeSet(I_MODE.I_EXE_MODE_CONT)
-        Console.WriteLine(TimeString + " Loaded investigation: " + filepath)
+        Console.WriteLine(String.Format("{0}: Loaded investigation: {1}", TimeString, filepath))
     End Sub
+
     ''' <summary>
     ''' Terminate the Sherlock engine.
     ''' </summary>
     Public Sub CloseSherlock()
         hSherlock.EngTerminate()
+        Console.WriteLine("Sherlock successfully closed.")
     End Sub
 
+#Region "Events"
+    Private Sub Sherlock_afterload_event() Handles hSherlock.AfterLoad
+        Console.WriteLine(String.Format("{0}: Sherlock after load event", TimeString))
+        'fill this with actions to take.
+    End Sub
+
+    Private Sub Sherlock_beforeload_event() Handles hSherlock.BeforeLoad
+        Console.WriteLine(String.Format("{0}: Sherlock before load event", TimeString))
+        'fill this with actions to take.
+    End Sub
+
+    Private Sub Sherlock_on_run_error_event() Handles hSherlock.OnRunError
+        Console.WriteLine(String.Format("{0}: Sherlock on run error event", TimeString))
+        'fill this with actions to take.
+    End Sub
+
+    Private Sub Sherlock_run_complete_event() Handles hSherlock.RunCompleted
+        Console.WriteLine(String.Format("{0}: Sherlock run complete event", TimeString))
+        'fill this with actions to take.
+    End Sub
+#End Region
 End Class

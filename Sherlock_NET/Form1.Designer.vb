@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Form1
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,14 +20,14 @@ Partial Class Form1
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.AxIpeDspCtrl1 = New AxIpeDspCtrlLib.AxIpeDspCtrl()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnOpenSherlock = New System.Windows.Forms.Button()
+        Me.btnStartVideo = New System.Windows.Forms.Button()
+        Me.btnStopVideo = New System.Windows.Forms.Button()
+        Me.btnClose = New System.Windows.Forms.Button()
         CType(Me.AxIpeDspCtrl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,51 +40,51 @@ Partial Class Form1
         Me.AxIpeDspCtrl1.Size = New System.Drawing.Size(776, 333)
         Me.AxIpeDspCtrl1.TabIndex = 0
         '
-        'Button1
+        'btnOpenSherlock
         '
-        Me.Button1.Location = New System.Drawing.Point(31, 368)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(107, 45)
-        Me.Button1.TabIndex = 1
-        Me.Button1.Text = "Open Sherlock *.ivs file"
-        Me.Button1.UseVisualStyleBackColor = True
+        Me.btnOpenSherlock.Location = New System.Drawing.Point(31, 368)
+        Me.btnOpenSherlock.Name = "btnOpenSherlock"
+        Me.btnOpenSherlock.Size = New System.Drawing.Size(107, 45)
+        Me.btnOpenSherlock.TabIndex = 1
+        Me.btnOpenSherlock.Text = "Open Sherlock *.ivs file"
+        Me.btnOpenSherlock.UseVisualStyleBackColor = True
         '
-        'Button2
+        'btnStartVideo
         '
-        Me.Button2.Location = New System.Drawing.Point(226, 368)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(107, 45)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Start Video"
-        Me.Button2.UseVisualStyleBackColor = True
+        Me.btnStartVideo.Location = New System.Drawing.Point(226, 368)
+        Me.btnStartVideo.Name = "btnStartVideo"
+        Me.btnStartVideo.Size = New System.Drawing.Size(107, 45)
+        Me.btnStartVideo.TabIndex = 2
+        Me.btnStartVideo.Text = "Start Video"
+        Me.btnStartVideo.UseVisualStyleBackColor = True
         '
-        'Button3
+        'btnStopVideo
         '
-        Me.Button3.Location = New System.Drawing.Point(421, 368)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(107, 45)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Stop Video"
-        Me.Button3.UseVisualStyleBackColor = True
+        Me.btnStopVideo.Location = New System.Drawing.Point(421, 368)
+        Me.btnStopVideo.Name = "btnStopVideo"
+        Me.btnStopVideo.Size = New System.Drawing.Size(107, 45)
+        Me.btnStopVideo.TabIndex = 3
+        Me.btnStopVideo.Text = "Stop Video"
+        Me.btnStopVideo.UseVisualStyleBackColor = True
         '
-        'Button4
+        'btnClose
         '
-        Me.Button4.Location = New System.Drawing.Point(616, 368)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(107, 45)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Close"
-        Me.Button4.UseVisualStyleBackColor = True
+        Me.btnClose.Location = New System.Drawing.Point(616, 368)
+        Me.btnClose.Name = "btnClose"
+        Me.btnClose.Size = New System.Drawing.Size(107, 45)
+        Me.btnClose.TabIndex = 4
+        Me.btnClose.Text = "Close"
+        Me.btnClose.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.Button3)
-        Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.btnClose)
+        Me.Controls.Add(Me.btnStopVideo)
+        Me.Controls.Add(Me.btnStartVideo)
+        Me.Controls.Add(Me.btnOpenSherlock)
         Me.Controls.Add(Me.AxIpeDspCtrl1)
         Me.Name = "Form1"
         Me.Text = "Form1"
@@ -94,8 +94,8 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents AxIpeDspCtrl1 As AxIpeDspCtrlLib.AxIpeDspCtrl
-    Friend WithEvents Button1 As Button
-    Friend WithEvents Button2 As Button
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btnOpenSherlock As Button
+    Friend WithEvents btnStartVideo As Button
+    Friend WithEvents btnStopVideo As Button
+    Friend WithEvents btnClose As Button
 End Class
