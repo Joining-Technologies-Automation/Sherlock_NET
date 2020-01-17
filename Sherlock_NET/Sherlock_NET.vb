@@ -33,8 +33,37 @@ End Module
 ''' Control the Sherlock software.
 ''' </summary>
 Public Class Sherlock_NET
+#Region "Declarations"
     Friend WithEvents HSherlock As New Engine
     Friend nErr As I_ENG_ERROR
+
+    Public Enum Investigate_Enum
+        Once = 1
+        Continuous = 2
+    End Enum
+#End Region
+#Region "Events"
+    Private Sub Sherlock_afterload_event() Handles HSherlock.AfterLoad
+        Console.WriteLine(String.Format("{0}: Sherlock after load event", TimeString))
+        'fill this with actions to take.
+    End Sub
+
+    Private Sub Sherlock_beforeload_event() Handles HSherlock.BeforeLoad
+        Console.WriteLine(String.Format("{0}: Sherlock before load event", TimeString))
+        'fill this with actions to take.
+    End Sub
+
+    Private Sub Sherlock_on_run_error_event() Handles HSherlock.OnRunError
+        Console.WriteLine(String.Format("{0}: Sherlock on run error event", TimeString))
+        Console.WriteLine(String.Format("{0}: Sherlock Error: {1}", TimeString, nErr.ToString))
+        'fill this with actions to take.
+    End Sub
+
+    Private Sub Sherlock_run_complete_event() Handles HSherlock.RunCompleted
+        Console.WriteLine(String.Format("{0}: Sherlock run complete event", TimeString))
+        'fill this with actions to take.
+    End Sub
+#End Region
 
     ''' <summary>
     ''' Initialize Sherlock Engine.
@@ -83,10 +112,7 @@ Public Class Sherlock_NET
             nErr = HSherlock.InvModeSet(I_MODE.I_EXE_MODE_ONCE)
         End If
     End Sub
-    Public Enum Investigate_Enum
-        Once = 1
-        Continuous = 2
-    End Enum
+
 
     ''' <summary>
     ''' Run the calibration on the camera.
@@ -97,26 +123,5 @@ Public Class Sherlock_NET
         nErr = HSherlock.InvModeSet(I_MODE.I_EXE_MODE_CALIB)
     End Sub
 
-#Region "Events"
-    Private Sub Sherlock_afterload_event() Handles HSherlock.AfterLoad
-        Console.WriteLine(String.Format("{0}: Sherlock after load event", TimeString))
-        'fill this with actions to take.
-    End Sub
 
-    Private Sub Sherlock_beforeload_event() Handles HSherlock.BeforeLoad
-        Console.WriteLine(String.Format("{0}: Sherlock before load event", TimeString))
-        'fill this with actions to take.
-    End Sub
-
-    Private Sub Sherlock_on_run_error_event() Handles HSherlock.OnRunError
-        Console.WriteLine(String.Format("{0}: Sherlock on run error event", TimeString))
-        Console.WriteLine(String.Format("{0}: Sherlock Error: {1}", TimeString, nErr.ToString))
-        'fill this with actions to take.
-    End Sub
-
-    Private Sub Sherlock_run_complete_event() Handles HSherlock.RunCompleted
-        Console.WriteLine(String.Format("{0}: Sherlock run complete event", TimeString))
-        'fill this with actions to take.
-    End Sub
-#End Region
 End Class

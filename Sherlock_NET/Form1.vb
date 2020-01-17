@@ -1,8 +1,9 @@
 ﻿Imports System.ComponentModel
 
 Public Class Form1
-    Private Sherlock As Sherlock_NET 'initialize in a t/c
-
+#Region "Declarations"
+    Private Sherlock As Sherlock_NET 'Instantiated in Form1_Load
+#End Region
 #Region "AxIpeDspCtrl1 ActiveX Functions on Main Form"
     ''' <summary>
     ''' Starts the activeX control for Sherlock.
