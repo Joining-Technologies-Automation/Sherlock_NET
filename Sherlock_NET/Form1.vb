@@ -8,14 +8,14 @@ Public Class Form1
     ''' Starts the activeX control for Sherlock.
     ''' </summary>
     Private Sub SherlockWindowINIT()
-        AxIpeDspCtrl1.ConnectEngine(Sherlock.hSherlock.GetEngineObj)
+        AxIpeDspCtrl1.ConnectEngine(Sherlock.HSherlock.GetEngineObj)
         AxIpeDspCtrl1.SetZoom(-1)
     End Sub
     ''' <summary>
     ''' Disconnects the current camera feed and connects the passed camera name.
     ''' </summary>
     ''' <param name="CamName">Camera Name used inside the Sherlock investigation.</param>
-    Public Sub LiveImageSherlockWindow(ByVal CamName As String)
+    Public Sub SherlockLiveImageWindow(ByVal CamName As String)
         AxIpeDspCtrl1.DisconnectImgWindow()
         AxIpeDspCtrl1.ConnectImgWindow(CamName)
     End Sub
@@ -53,7 +53,7 @@ Public Class Form1
     End Sub
 #End Region
 #Region "Buttons"
-    Private Sub btnOpenSherlock_Click(sender As Object, e As EventArgs) Handles btnOpenSherlock.Click
+    Private Sub BTNOpenSherlock_Click(sender As Object, e As EventArgs) Handles BTNOpenSherlock.Click
         Dim d As New OpenFileDialog With {
             .CheckFileExists = True,
             .CheckPathExists = True,
@@ -64,20 +64,21 @@ Public Class Form1
         d.ShowDialog()
         Try
             Sherlock.LoadInvestigation(d.FileName)
+            Sherlock.Investigate(Sherlock_NET.Investigate_Enum.Once)
         Catch ex As Exception
             MsgBox("Problem loading the sherlock investigation", MsgBoxStyle.OkCancel, "Error")
         End Try
     End Sub
 
-    Private Sub btnStartVideo_Click(sender As Object, e As EventArgs) Handles btnStartVideo.Click
-        LiveImageSherlockWindow(CamNames.CamName1)
+    Private Sub BTNStartVideo_Click(sender As Object, e As EventArgs) Handles BTNStartVideo.Click
+        SherlockLiveImageWindow(CamNames.CamName1)
     End Sub
 
-    Private Sub btnStopVideo_Click(sender As Object, e As EventArgs) Handles btnStopVideo.Click
+    Private Sub BTNStopVideo_Click(sender As Object, e As EventArgs) Handles BTNStopVideo.Click
 
     End Sub
 
-    Private Sub btnClose_Click(sender As Object, e As EventArgs) Handles btnClose.Click
+    Private Sub BTNClose_Click(sender As Object, e As EventArgs) Handles BTNClose.Click
         Close()
     End Sub
 #End Region

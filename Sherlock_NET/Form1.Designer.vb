@@ -24,10 +24,10 @@ Partial Class Form1
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Form1))
         Me.AxIpeDspCtrl1 = New AxIpeDspCtrlLib.AxIpeDspCtrl()
-        Me.btnOpenSherlock = New System.Windows.Forms.Button()
-        Me.btnStartVideo = New System.Windows.Forms.Button()
-        Me.btnStopVideo = New System.Windows.Forms.Button()
-        Me.btnClose = New System.Windows.Forms.Button()
+        Me.BTNOpenSherlock = New System.Windows.Forms.Button()
+        Me.BTNStartVideo = New System.Windows.Forms.Button()
+        Me.BTNStopVideo = New System.Windows.Forms.Button()
+        Me.BTNClose = New System.Windows.Forms.Button()
         CType(Me.AxIpeDspCtrl1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -40,51 +40,51 @@ Partial Class Form1
         Me.AxIpeDspCtrl1.Size = New System.Drawing.Size(776, 333)
         Me.AxIpeDspCtrl1.TabIndex = 0
         '
-        'btnOpenSherlock
+        'BTNOpenSherlock
         '
-        Me.btnOpenSherlock.Location = New System.Drawing.Point(31, 368)
-        Me.btnOpenSherlock.Name = "btnOpenSherlock"
-        Me.btnOpenSherlock.Size = New System.Drawing.Size(107, 45)
-        Me.btnOpenSherlock.TabIndex = 1
-        Me.btnOpenSherlock.Text = "Open Sherlock *.ivs file"
-        Me.btnOpenSherlock.UseVisualStyleBackColor = True
+        Me.BTNOpenSherlock.Location = New System.Drawing.Point(31, 368)
+        Me.BTNOpenSherlock.Name = "BTNOpenSherlock"
+        Me.BTNOpenSherlock.Size = New System.Drawing.Size(107, 45)
+        Me.BTNOpenSherlock.TabIndex = 1
+        Me.BTNOpenSherlock.Text = "Open Sherlock *.ivs file"
+        Me.BTNOpenSherlock.UseVisualStyleBackColor = True
         '
-        'btnStartVideo
+        'BTNStartVideo
         '
-        Me.btnStartVideo.Location = New System.Drawing.Point(226, 368)
-        Me.btnStartVideo.Name = "btnStartVideo"
-        Me.btnStartVideo.Size = New System.Drawing.Size(107, 45)
-        Me.btnStartVideo.TabIndex = 2
-        Me.btnStartVideo.Text = "Start Video"
-        Me.btnStartVideo.UseVisualStyleBackColor = True
+        Me.BTNStartVideo.Location = New System.Drawing.Point(226, 368)
+        Me.BTNStartVideo.Name = "BTNStartVideo"
+        Me.BTNStartVideo.Size = New System.Drawing.Size(107, 45)
+        Me.BTNStartVideo.TabIndex = 2
+        Me.BTNStartVideo.Text = "Start Video"
+        Me.BTNStartVideo.UseVisualStyleBackColor = True
         '
-        'btnStopVideo
+        'BTNStopVideo
         '
-        Me.btnStopVideo.Location = New System.Drawing.Point(421, 368)
-        Me.btnStopVideo.Name = "btnStopVideo"
-        Me.btnStopVideo.Size = New System.Drawing.Size(107, 45)
-        Me.btnStopVideo.TabIndex = 3
-        Me.btnStopVideo.Text = "Stop Video"
-        Me.btnStopVideo.UseVisualStyleBackColor = True
+        Me.BTNStopVideo.Location = New System.Drawing.Point(421, 368)
+        Me.BTNStopVideo.Name = "BTNStopVideo"
+        Me.BTNStopVideo.Size = New System.Drawing.Size(107, 45)
+        Me.BTNStopVideo.TabIndex = 3
+        Me.BTNStopVideo.Text = "Stop Video"
+        Me.BTNStopVideo.UseVisualStyleBackColor = True
         '
-        'btnClose
+        'BTNClose
         '
-        Me.btnClose.Location = New System.Drawing.Point(616, 368)
-        Me.btnClose.Name = "btnClose"
-        Me.btnClose.Size = New System.Drawing.Size(107, 45)
-        Me.btnClose.TabIndex = 4
-        Me.btnClose.Text = "Close"
-        Me.btnClose.UseVisualStyleBackColor = True
+        Me.BTNClose.Location = New System.Drawing.Point(616, 368)
+        Me.BTNClose.Name = "BTNClose"
+        Me.BTNClose.Size = New System.Drawing.Size(107, 45)
+        Me.BTNClose.TabIndex = 4
+        Me.BTNClose.Text = "Close"
+        Me.BTNClose.UseVisualStyleBackColor = True
         '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(800, 450)
-        Me.Controls.Add(Me.btnClose)
-        Me.Controls.Add(Me.btnStopVideo)
-        Me.Controls.Add(Me.btnStartVideo)
-        Me.Controls.Add(Me.btnOpenSherlock)
+        Me.Controls.Add(Me.BTNClose)
+        Me.Controls.Add(Me.BTNStopVideo)
+        Me.Controls.Add(Me.BTNStartVideo)
+        Me.Controls.Add(Me.BTNOpenSherlock)
         Me.Controls.Add(Me.AxIpeDspCtrl1)
         Me.Name = "Form1"
         Me.Text = "Form1"
@@ -94,8 +94,8 @@ Partial Class Form1
     End Sub
 
     Friend WithEvents AxIpeDspCtrl1 As AxIpeDspCtrlLib.AxIpeDspCtrl
-    Friend WithEvents btnOpenSherlock As Button
-    Friend WithEvents btnStartVideo As Button
-    Friend WithEvents btnStopVideo As Button
-    Friend WithEvents btnClose As Button
+    Friend WithEvents BTNOpenSherlock As Button
+    Friend WithEvents BTNStartVideo As Button
+    Friend WithEvents BTNStopVideo As Button
+    Friend WithEvents BTNClose As Button
 End Class
